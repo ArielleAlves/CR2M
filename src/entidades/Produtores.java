@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Produtores {
-	
+	//Campos do cadastro de Produtor
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;	
