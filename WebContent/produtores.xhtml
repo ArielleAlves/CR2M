@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="../template.xhtml">
+
+<ui:define name="corpo">
+		<h:form id="tabProdutores">
+			<p:dataTable value="#{produtoresMB.produtores}" var="prods">
+			<p:ajax event="rowSelect" listener="#{produtoresMB.onRowSelect(prods.id)}" update=":form:msgs" />
+        	<!-- <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs" /> -->
+				<p:column headerText="Nome">
+					<h:outputText value="#{prods.nome}" />
+				</p:column>
+				<p:column headerText="Telefone">
+					<h:outputText value="#{prods.telefone}" />
+				</p:column>
+			</p:dataTable>
+			<p:commandButton value="Cadastrar" type="button" actionListener=""/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
