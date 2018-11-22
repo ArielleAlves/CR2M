@@ -7,11 +7,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import banco.DAOGenerico;
-
+//Controle com as funçoes envolvendo a renda da raiz de mandioca
 @ManagedBean
 @ViewScoped
 public class RendaRaizMB {
-	
+	// declarações
 	private RendaRaiz rendaRaiz;
 	private Produtores produtores;
 	private DAOGenerico<RendaRaiz> dao = new DAOGenerico<>(RendaRaiz.class);
