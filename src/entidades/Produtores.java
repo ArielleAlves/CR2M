@@ -6,7 +6,7 @@ public class Produtores {
 	private String nome;
 	private String cpf;
 	private String telefone;
-	private String endereço;
+	private String endereco;
 	
 	
 }
