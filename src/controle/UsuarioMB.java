@@ -19,6 +19,7 @@ public class UsuarioMB {
 		usuario = new Usuario();
 	}
 	
+	//Retorna qual o tipo do usuário logado 
 	public String getTipoUsuario() {
 		if (usuario.getTipo().equals("Empresa")) {
 			return "produtores.xhtml";
@@ -28,7 +29,9 @@ public class UsuarioMB {
 			return "";
 		}
 	}
-	
+	//Caso o usuario seja do tipo produtor, ao ser cadastrado um novo, 
+	//será inserido um produtor para este usuário, 
+	//pois o usuário do tipo produtor não pode cadastrar produtores para ele igual o as empresas
 	public void inserirProdutor() {
 	usuario.setTipo("Produtor");
 		dao.salvar(usuario);
