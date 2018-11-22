@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public abstract class Usuario {
+public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,6 +14,14 @@ public abstract class Usuario {
 	private String user;
 	private String senha;
 	private String tipo;
+	
+	public String getDocFederal() {
+		return docFederal;
+	}
+	public void setDocFederal(String docFederal) {
+		this.docFederal = docFederal;
+	}
+	private String docFederal;
 	
 	public String getTipo() {
 		return tipo;
