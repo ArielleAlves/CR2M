@@ -1,34 +1,46 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui">
+<h:head>
+  <meta charset="UTF-8"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet"/>
+  <link type="text/css" rel="stylesheet" href="#{request.contextPath}/estilos/semantic.css" />
+  <link type="text/css" rel="stylesheet" href="#{request.contextPath}/estilos/style.css" />
+  <title>CR2M WEB</title>
+</h:head>
+<h:body>
+	<div class="content">
+		<div class="row">
+			<div id="img">
+				<img src="#{request.contextPath}/estilos/img/logo.png" width="100"/>
+			</div>
+			<div id="box">
+				<h:outputText value="Usuário ou senha incorretos"
+					rendered="#{param.error==true}" />
 
-<h:head></h:head>
-<body>
-
-	<h:outputText value="E-mail ou senha incorretos"
-		rendered="#{param.error==true}" />
-
-	<h:panelGrid columns="1" styleClass="col-md-12  col-xs-12">
-		<form id="frmLogin" action="j_spring_security_check" method="post">
-			<label>E-mail</label>
-			<p:inputText required="true" id="j_username"
-				styleClass="col-md-12 col-xs-12" />
+				<h:panelGrid columns="1" styleClass="col-md-12  col-xs-12">
+					<h:form id="frmLogin" action="j_spring_security_check" method="post">
+						<label>Usuário</label>
+						<p:inputText required="true" id="j_username"
+							styleClass="col-md-12 col-xs-12" />
 
 
-			<label>Senha</label>
-			<p:password required="true" id="j_password"
-				styleClass="col-md-12 col-xs-12" />
+						<label>Senha</label>
+						<p:password required="true" id="j_password"
+							styleClass="col-md-12 col-xs-12" />
 
-			<h:commandButton value="Entrar"
-				styleClass="ui-priority-primary btn btn-block" />
+						<h:commandButton value="Entrar"
+							styleClass="ui-priority-primary btn btn-block" />
 
-			<a href="recuperar-senha.jsf">Esqueceu a senha?</a>
-		</form>
-	</h:panelGrid>
-
-</body>
+						<a href="recuperar-senha.jsf">Esqueceu a senha?</a>
+					</h:form>
+				</h:panelGrid>
+			</div>
+		</div>
+	</div>
+	<div class="footer">© 2018 - Todos os direitos reservados.</div>
+</h:body>
 </html>

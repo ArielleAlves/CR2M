@@ -33,4 +33,10 @@
              <url-pattern>/*</url-pattern>
        </filter-mapping>  
 <!--   FIM DAS CONFIGURAÇÕES DO SPRING SECURITY -->
+
+<!-- Configuracao do Spring -->
+<!--    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring-security.xml, /WEB-INF/applicationContext.xml</param-value>
+    </context-param>    -->
 </web-app>
