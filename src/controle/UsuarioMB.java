@@ -1,23 +1,37 @@
 package controle;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import banco.DAOGenerico;
+import entidades.Produtores;
 import entidades.Usuario;
 
+@ManagedBean
+@ViewScoped
 public class UsuarioMB {
+	private Produtores produtores;
 	private Usuario usuario;
+	private DAOGenerico<Usuario> dao = new DAOGenerico<>(Usuario.class);
+	private DAOGenerico<Produtores> daoProdutores = new DAOGenerico<>(Produtores.class);
 	
-	public void getTipoUsuario() {
+	public String getTipoUsuario() {
 		if (usuario.getTipo().equals("Empresa")) {
-			//chamaTela de produtores
+			return "produtores.xhtml";
 		} else if (usuario.getTipo().equals("Produtor")) {
-			//Pega produtor do usuario
-			//chamaTela principal com produtor selecionado
+			return "principalProdutor.xhtml";
+		} else {
+			return "";
 		}
 	}
 	
 	public void inserir() {
-		//salvar
+		dao.salvar(usuario);
 		if (usuario.getTipo().equals("Produtor")) {
-			//inserir produtor unico para o usuario
+			produtores = new Produtores();
+			produtores.setNome(usuario.getUser());
+			produtores.setUsuario(usuario);
+			daoProdutores.salvar(produtores);
 		}
 	}
 	

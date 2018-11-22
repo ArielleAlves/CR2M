@@ -1,18 +1,25 @@
 package controle;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import banco.DAOGenerico;
 import entidades.Produtores;
 import entidades.Usuario;
 
+@ManagedBean
+@ViewScoped
 public class ProdutoresMB {
 	private Produtores produtores;
 	private Usuario usuario;
+	private DAOGenerico<Produtores> dao = new DAOGenerico<>(Produtores.class);
 	
 	public void inserir() {
-		//salvar
+		dao.salvar(produtores);
 	}
 	
 	public void remover() {
-		//excluir
+		dao.excluir(produtores.getId());
 	}
 	
 	public Produtores getProdutores() {

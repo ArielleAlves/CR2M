@@ -3,22 +3,43 @@ package controle;
 import entidades.Produtores;
 import entidades.RendaRaiz;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import banco.DAOGenerico;
+
+@ManagedBean
+@ViewScoped
 public class RendaRaizMB {
-	public RendaRaiz rendaRaiz;
-	public Produtores produtores;
 	
+	private RendaRaiz rendaRaiz;
+	private Produtores produtores;
+	private DAOGenerico<RendaRaiz> dao = new DAOGenerico<>(RendaRaiz.class);
+	
+	public RendaRaiz getRendaRaiz() {
+		return rendaRaiz;
+	}
+	public void setRendaRaiz(RendaRaiz rendaRaiz) {
+		this.rendaRaiz = rendaRaiz;
+	}
+	public Produtores getProdutores() {
+		return produtores;
+	}
+	public void setProdutores(Produtores produtores) {
+		this.produtores = produtores;
+	}
 	public void calcularRenda() {
 		rendaRaiz.setRendaFinal(
 				rendaRaiz.getPesoSeco()/(rendaRaiz.getPesoSeco() - rendaRaiz.getPesoMolhado()));
 	}
 	public void salvar() {
 		if (rendaRaiz.getRendaFinal() != 0) {
-			//salvar
+			dao.salvar(rendaRaiz);
 		} else {
 			//retornar mensagem
 		}
 	}
 	public void remover() {
-		//excluir
+		dao.excluir(rendaRaiz.getId());
 	}
 }
