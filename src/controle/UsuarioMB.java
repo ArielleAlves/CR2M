@@ -10,7 +10,7 @@ import entidades.Usuario;
 @ManagedBean
 @ViewScoped
 public class UsuarioMB {
-	private Produtores produtores;
+	private Produtores produtores;	
 	private Usuario usuario;
 	private DAOGenerico<Usuario> dao = new DAOGenerico<>(Usuario.class);
 	private DAOGenerico<Produtores> daoProdutores = new DAOGenerico<>(Produtores.class);
@@ -25,14 +25,18 @@ public class UsuarioMB {
 		}
 	}
 	
-	public void inserir() {
+	public void inserirProdutor() {
+	usuario.setTipo("Produtor");
 		dao.salvar(usuario);
-		if (usuario.getTipo().equals("Produtor")) {
-			produtores = new Produtores();
+			produtores = new Produtores();			
 			produtores.setNome(usuario.getUser());
 			produtores.setUsuario(usuario);
 			daoProdutores.salvar(produtores);
-		}
+	}
+	
+	public void inserirEmpresa() {
+		usuario.setTipo("Empresa");
+		dao.salvar(usuario);
 	}
 	
 	public Usuario getUsuario() {
