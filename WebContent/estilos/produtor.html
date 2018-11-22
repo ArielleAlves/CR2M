@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta charset="UTF-8"/>
+			<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="semantic.css">
+				<link rel="stylesheet" type="text/css" href="style.css">
+			<title>CR2M WEB</title>
+    </h:head>
+    <h:body>
+      <h:form id="formulario">
+        <h:outputText id="titulo" value="Cadastro de Contatos" style="font-weight: bold;"/>
+        <h:panelGrid id="dados" columns="2">
+          <h:outputText id="nomeLabel" value="Nome:"/>
+          <h:inputText id="nome" label="Nome" value="#{contatoMB.contato.nome}" maxlength="50"/>
+          <h:outputText id="telefoneLabel" value="Telefone:"/>
+          <h:inputText id="telefone" label="Telefone" value="#{contatoMB.contato.telefone}" maxlength="15"/>
+          <h:outputText id="nascimentoLabel" value="Data de Nascimento:"/>
+          <h:inputText id="nascimento" label="Data de Nascimento" value="#{contatoMB.contato.dataNascimento}" maxlength="10">
+            <f:convertDateTime id="padraoData" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+          </h:inputText>
+        </h:panelGrid>
+        <h:commandButton id="cadastrar" value="Cadastrar" action="#{contatoMB.adicionarContato}"/>
+        <h:messages id="msg"/>
+      </h:form>
+    </h:body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8"/>
+			<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="semantic.css">
+				<link rel="stylesheet" type="text/css" href="style.css">
+			<title>CR2M WEB</title>
+		</head>
+
+		<body>
+		<div class="content">
+			<div class="texto1">PRODUTOR</div>
+			<div class="row">
+
+			<h:outputText value="E-mail ou senha incorretos"
+		rendered="#{param.error==true}" />
+
+	<h:panelGrid columns="1" styleClass="col-md-12  col-xs-12">
+		<form id="frmLogin" action="j_spring_security_check" method="post">
+			<label>E-mail</label>
+			<p:inputText required="true" id="j_username"
+				styleClass="col-md-12 col-xs-12" />
+
+
+			<label>Senha</label>
+			<p:password required="true" id="j_password"
+				styleClass="col-md-12 col-xs-12" />
+
+			<h:commandButton value="Entrar"
+				styleClass="ui-priority-primary btn btn-block" />
+
+			<a href="recuperar-senha.jsf">Esqueceu a senha?</a>
+		</form>
+	</h:panelGrid>
+				
+				<div id="img"><img  src="img/logo.png" width="50"></div>
+					<div class="greenb"><a style="color:#fff; margin-top: 30px;" class="greenb1" href="#">MÉDIA DE RENDA</a></div>
+					<div class="greenb" style="margin-top: 25px;"><a style="color:#fff;" class="greenb1" href="#">CALCULADORA</a></div>
+				</div>
+		</div>
+		<div class="footer">© 2018 - Todos os direitos reservados.</div>	
+		</body>
+	</html>
