@@ -15,6 +15,10 @@ public class UsuarioMB {
 	private DAOGenerico<Usuario> dao = new DAOGenerico<>(Usuario.class);
 	private DAOGenerico<Produtores> daoProdutores = new DAOGenerico<>(Produtores.class);
 	
+	public UsuarioMB() {
+		usuario = new Usuario();
+	}
+	
 	public String getTipoUsuario() {
 		if (usuario.getTipo().equals("Empresa")) {
 			return "produtores.xhtml";

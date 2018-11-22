@@ -1,0 +1,53 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/faces/principalProdutor.xhtml"
+			access="hasRole('Empresa') or hasRole('Produtor')" />
+			
+		<intercept-url pattern="/faces/produtores.xhtml"
+			access="hasRole('Empresa')" />	
+
+<!-- 		<intercept-url pattern="/paginas/padrao/**" -->
+<!-- 			access="hasRole('Administrador') or hasRole('Vendedor')" /> -->
+
+<!-- 		<intercept-url pattern="/paginas/admin/**"  -->
+<!-- 			access="hasRole('Administrador')" /> -->
+
+<!-- 		<intercept-url pattern="/paginas/inicialRestrita.jsf"  -->
+<!-- 			access="hasRole('Administrador') or hasRole('Vendedor')" /> -->
+
+
+		<access-denied-handler error-page="/faces/403.xhtml" />
+		<form-login login-page="/faces/login.xhtml"
+			authentication-failure-url="/login.xhtml?error=true" />
+	</http>
+
+	<authentication-manager>
+
+
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT user as username, senha as password FROM Usuario WHERE user=?"
+				authorities-by-username-query="SELECT user as username, tipo as authority FROM Usuario WHERE user=?" />
+
+		</authentication-provider>
+
+
+	</authentication-manager>
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="url"
+			value="jdbc:mysql://localhost:3306/db_cr2m" />
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="" />
+	</beans:bean>
+
+
+
+
+
+</beans:beans>

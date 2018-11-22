@@ -5,12 +5,17 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="../template.xhtml">
-
-<ui:define name="corpo">
+<h:head>
+  <meta charset="UTF-8"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet"/>
+  <link type="text/css" rel="stylesheet" href="#{request.contextPath}/estilos/semantic.css" />
+  <link type="text/css" rel="stylesheet" href="#{request.contextPath}/estilos/style.css" />
+  <title>Produtores</title>
+</h:head>
+<h:body>
 		<h:form id="tabProdutores">
 			<p:dataTable value="#{produtoresMB.produtores}" var="prods">
-			<p:ajax event="rowSelect" listener="#{produtoresMB.onRowSelect(prods.id)}" update=":form:msgs" />
+			<p:ajax event="rowSelect" listener="#{produtoresMB.onRowSelect(prods.id)}" />
         	<!-- <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs" /> -->
 				<p:column headerText="Nome">
 					<h:outputText value="#{prods.nome}" />
@@ -21,6 +26,5 @@
 			</p:dataTable>
 			<p:commandButton value="Cadastrar" type="button" actionListener="#{produtores.inserir()}"/>
 		</h:form>
-	</ui:define>
-</ui:composition>
+</h:body>
 </html>
